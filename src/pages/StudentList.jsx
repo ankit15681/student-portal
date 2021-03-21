@@ -34,23 +34,17 @@ class StudentList extends Component {
 
     render() {
         const { students, isLoading } = this.state
-        console.log('TCL: MoviesList -> render -> movies', students)
 
         const columns = [
-            {
-                Header: 'ID',
-                accessor: '_id',
-                filterable: true,
-            },
+            
             {
                 Header: 'Name',
                 accessor: 'name',
-                filterable: true,
+                // filterable: true,
             },
             {
                 Header: 'Year',
                 accessor: 'yearOfBatch',
-                filterable: true,
             },
             {
                 Header: 'Time',

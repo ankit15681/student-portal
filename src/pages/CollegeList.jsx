@@ -4,6 +4,7 @@ import "react-table-6/react-table.css"
 import api from '../api'
 
 import styled from 'styled-components'
+import ChartJs from './ChartJs';
 
 // import 'react-table/react-table.css'
 
@@ -15,7 +16,7 @@ class CollegeList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            movies: [],
+            colleges: [],
             columns: [],
             isLoading: false,
         }
@@ -24,51 +25,67 @@ class CollegeList extends Component {
     componentDidMount = async () => {
         this.setState({ isLoading: true })
 
-        await api.getAllColleges().then(movies => {
+        await api.getAllColleges().then(colleges => {
             this.setState({
-                movies: movies.data.data,
+                colleges: colleges.data.data,
                 isLoading: false,
             })
         })
+
+
     }
 
     render() {
-        const { movies, isLoading } = this.state
-        console.log('TCL: MoviesList -> render -> movies', movies)
+        const { colleges, isLoading } = this.state
+        const labels = colleges.map(college=> {
+           return college.state;
+        })
+        console.log(labels.length)
+        console.log(labels);
 
         const columns = [
-            {
-                Header: 'ID',
-                accessor: '_id',
-                filterable: true,
-            },
+            
             {
                 Header: 'Name',
                 accessor: 'name',
-                filterable: true,
+                // filterable: true,
             },
             {
-                Header: 'Rating',
-                accessor: 'rating',
-                filterable: true,
+                Header: 'Year',
+                accessor: 'year',
             },
             {
-                Header: 'Time',
-                accessor: 'time',
-                Cell: props => <span>{props.value.join(' / ')}</span>,
+                Header: 'City',
+                accessor: 'city',
             },
+            {
+                Header: 'State',
+                accessor: 'state',
+            },
+            {
+                Header: 'Country',
+                accessor: 'country',
+            },
+            // {
+            //     // Header: 'No of Students',
+            //     // accessor: 'noOfStudents',
+            //     // Cell: props => <span>{props.value.join(' / ')}</span>,
+            // },
         ]
 
         let showTable = true
-        if (!movies.length) {
+        if (!colleges.length) {
             showTable = false
         }
 
         return (
-            <Wrapper>
+            
+            <Wrapper style={{width: "76vw", marginLeft:"12vw"}}>
+                <ChartJs labels={labels} />
                 {showTable && (
                     <ReactTable
-                        data={movies}
+                        style={{textAlign: 'center'}}
+                        data={colleges}
                         columns={columns}
                         loading={isLoading}
                         defaultPageSize={10}
