@@ -28,7 +28,7 @@ class Links extends Component {
                                 List Colleges
                             </Link>
                         </Item>
-                        <Item>
+                        {/* <Item>
                             <Link to="/students/list" className="nav-link">
                                 List Students
                             </Link>
@@ -37,7 +37,7 @@ class Links extends Component {
                             <Link to="/chart" className="nav-link">
                                 List Students
                             </Link>
-                        </Item>
+                        </Item> */}
                     </List>
                 </Collapse>
             </React.Fragment>

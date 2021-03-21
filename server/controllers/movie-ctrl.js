@@ -8,7 +8,7 @@ createStudent = (req, res) => {
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: 'You must provide a movie',
+            error: 'You must provide a Student',
         })
     }
 
@@ -24,13 +24,13 @@ createStudent = (req, res) => {
             return res.status(201).json({
                 success: true,
                 id: student._id,
-                message: 'Movie created!',
+                message: 'Student created!',
             })
         })
         .catch(error => {
             return res.status(400).json({
                 error,
-                message: 'Movie not created!',
+                message: 'Student not created!',
             })
         })
 }
@@ -40,7 +40,7 @@ createCollege = (req, res) => {
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: 'You must provide a movie',
+            error: 'You must provide a College',
         })
     }
 
@@ -56,13 +56,13 @@ createCollege = (req, res) => {
             return res.status(201).json({
                 success: true,
                 id: college._id,
-                message: 'Movie created!',
+                message: 'College created!',
             })
         })
         .catch(error => {
             return res.status(400).json({
                 error,
-                message: 'Movie not created!',
+                message: 'College not created!',
             })
         })
 }
@@ -76,7 +76,7 @@ getStudentById = async (req, res) => {
         if (!student) {
             return res
                 .status(404)
-                .json({ success: false, error: `Movie not found` })
+                .json({ success: false, error: `Student not found` })
         }
         return res.status(200).json({ success: true, data: student })
     }).catch(err => console.log(err))
@@ -91,7 +91,7 @@ getCollegeById = async (req, res) => {
         if (!college) {
             return res
                 .status(404)
-                .json({ success: false, error: `Movie not found` })
+                .json({ success: false, error: `College not found` })
         }
         return res.status(200).json({ success: true, data: college })
     }).catch(err => console.log(err))
@@ -105,7 +105,7 @@ getStudents = async (req, res) => {
         if (!students.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Movie not found` })
+                .json({ success: false, error: `Student not found` })
         }
         return res.status(200).json({ success: true, data: students })
     }).catch(err => console.log(err))
@@ -118,7 +118,7 @@ getColleges = async (req, res) => {
         if (!colleges.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Movie not found` })
+                .json({ success: false, error: `College not found` })
         }
         return res.status(200).json({ success: true, data: colleges })
     }).catch(err => console.log(err))
